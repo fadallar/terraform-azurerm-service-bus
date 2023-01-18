@@ -8,7 +8,7 @@ resource "azurerm_private_endpoint" "servicebuspep" {
   
   private_dns_zone_group {
     name                 = "servicebus-group"
-    private_dns_zone_ids = var.private_dns_zone_ids
+    private_dns_zone_ids = [var.private_dns_zone_ids]
   }
   private_service_connection {
     name                           = "servicebusprivatelink"
