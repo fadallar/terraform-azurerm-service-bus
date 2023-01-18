@@ -38,7 +38,13 @@ variable "zone_redundant" {
 }
 
 variable "capacity" {
-  description ="Specifies the capacity. When sku is Premium, capacity can be 1, 2, 4, 8 or 16. When sku is Basic or Standard, capacity can be 0 only."
+  description = "Specifies the capacity. When sku is Premium, capacity can be 1, 2, 4, 8 or 16. When sku is Basic or Standard, capacity can be 0 only."
   type = number
   default = 0
+}
+
+variable "sku" {
+  description = "Defines which tier to use. Options are Basic, Standard or Premium"
+  type = string
+  default = "Basic"
 }
