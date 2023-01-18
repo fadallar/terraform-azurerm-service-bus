@@ -14,6 +14,6 @@ resource "azurerm_private_endpoint" "servicebuspep" {
     name                           = "servicebusprivatelink"
     is_manual_connection           = false
     private_connection_resource_id = azurerm_servicebus_namespace.service_bus_namespace.id
-    subresource_names              = ["#####"]  #### Need to update that part
+    subresource_names              = ["namespace"]
   }
 }

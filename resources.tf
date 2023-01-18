@@ -7,15 +7,15 @@ resource "azurerm_servicebus_namespace" "service_bus_namespace" {
     public_network_access_enabled = var.public_network_access_enabled
     minimum_tls_version = 1.2
     zone_redundant = var.zone_redundant
-    capacity = var.capcity
+    capacity = var.capacity
 
     tags = merge(var.default_tags,var.extra_tags)
     
-    dynamic identity {
-        type = var.identity_type
-        identity_ids = []   ### need to develop that one
-
-    }
+#    dynamic identity {
+#        type = var.identity_type
+#        identity_ids = []   ### need to develop that one
+#
+#    }
 // Not foreseen to use customer_managed_key
 #   dynamic customer_managed_key {
 #        key_vault_key_id =
