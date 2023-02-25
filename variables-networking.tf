@@ -12,13 +12,13 @@ variable "network_acls" {
 variable "private_dns_zone_ids" {
   description = "Id of the private DNS Zone  to be used by the private endpoint"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "subnet_id" {
   description = "Id for the subnet used by the private endpoint"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "public_network_access_enabled" {
