@@ -24,12 +24,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "tenant_id" {
-  description = "The Azure Active Directory tenant ID that should be used for authenticating requests to the ####. Default is the current one."
-  type        = string
-  default     = ""
-}
-
 variable "zone_redundant" {
   description = "Whether or not this resource is zone redundant. sku needs to be Premium"
   type = bool
@@ -37,14 +31,32 @@ variable "zone_redundant" {
 
 }
 
+variable "local_auth_enabled" {
+  description = "Whether or not SAS authentication is enabled for the Service Bus namespace."
+  type = bool
+  default- = false
+}
+
 variable "capacity" {
   description = "Specifies the capacity. When sku is Premium, capacity can be 1, 2, 4, 8 or 16. When sku is Basic or Standard, capacity can be 0 only."
   type = number
-  default = 0
+  default = 1
+}
+
+variabme "minimum_tls_version" {
+  description = "The minimum supported TLS version for this Service Bus Namespace."
+  type = string
+  default = 1.2
 }
 
 variable "sku" {
   description = "Defines which tier to use. Options are Basic, Standard or Premium"
   type = string
-  default = "Basic"
+  default = "Premium"
+}
+
+variable "identity_ids" {
+  type        = list(string)
+  description = "List of user assigned identity IDs"
+  default     = null
 }

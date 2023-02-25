@@ -3,19 +3,18 @@ resource "azurerm_servicebus_namespace" "service_bus_namespace" {
     location            = var.location
     resource_group_name = var.resource_group_name
     sku                 = var.sku
-    local_auth_enabled = false
+    local_auth_enabled = var.local_auth_enabled
     public_network_access_enabled = var.public_network_access_enabled
-    minimum_tls_version = 1.2
+    minimum_tls_version = var.minimum_tls_version
     zone_redundant = var.zone_redundant
     capacity = var.capacity
 
     tags = merge(var.default_tags,var.extra_tags)
     
-#    dynamic identity {
-#        type = var.identity_type
-#        identity_ids = []   ### need to develop that one
-#
-#    }
+    identity {
+        type         = var.identity_ids == null ? "SystemAssigned" : "SystemAssigned, UserAssigned"
+        identity_ids = var.identity_ids
+    }
 // Not foreseen to use customer_managed_key
 #   dynamic customer_managed_key {
 #        key_vault_key_id =
@@ -24,6 +23,8 @@ resource "azurerm_servicebus_namespace" "service_bus_namespace" {
 #    }
   
 }
+
+
 // Topics and Subscriptions will be developped later
 #resource "azurerm_servicebus_topic" "service_bus_topic" {
 #    name         = var.service_bus_topic

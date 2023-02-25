@@ -1,3 +1,18 @@
+# Need to Work on that part 
+#resource "azurerm_servicebus_namespace_network_rule_set" "example" {
+#  count = var.public_network_access_enabled == true ? 1 : 0
+#  namespace_id = azurerm_servicebus_namespace.example.id
+#  default_action                = "Deny"
+#  public_network_access_enabled = true
+#
+#  network_rules {
+#    subnet_id                            = azurerm_subnet.example.id
+#    ignore_missing_vnet_service_endpoint = false
+#  }
+#
+#  ip_rules = [""]
+#}
+
 resource "azurerm_private_endpoint" "servicebuspep" {
   count               = var.enable_private_endpoint == true ? 1 : 0
   name                = format("pe-%s", local.name)
