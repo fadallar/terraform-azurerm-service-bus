@@ -34,7 +34,7 @@ variable "zone_redundant" {
 variable "local_auth_enabled" {
   description = "Whether or not SAS authentication is enabled for the Service Bus namespace."
   type        = bool
-  default-    = false
+  default     = false
 }
 
 variable "capacity" {
@@ -43,7 +43,7 @@ variable "capacity" {
   default     = 1
 }
 
-variabme "minimum_tls_version" {
+variable "minimum_tls_version" {
   description = "The minimum supported TLS version for this Service Bus Namespace."
   type        = string
   default     = 1.2
